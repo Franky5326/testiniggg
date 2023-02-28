@@ -231,7 +231,8 @@ Vue.component('col3', {
             this.column3.push(card)
             this.column3.splice(this.column3.indexOf(card), 1)
         }
-    }
+    },
+    
 })
 
 Vue.component('col4', {
@@ -244,6 +245,7 @@ Vue.component('col4', {
                     <li class="tasks">Description: {{card.description}}</li>
                     <li class="tasks">Date of creation:
                     {{ card.date }}</li>
+                    <li class="tasks">Comdate: {{card.comdate}}</li>
                     <li class="tasks">Deadline: {{card.deadline}}</li>
                     <li class="tasks" v-if="card.deadline >= card.comdate">Сompleted on time</li>
                     <li class="tasks" v-if="card.deadline < card.comdate">Not completed on time</li>
@@ -288,10 +290,10 @@ Vue.component('newcard', {
                 <label for="intitle">Title</label>
                 <input id="intitle" required v-model="title" maxlength="30" type="text" placeholder="title">
             </p>
-            <label for="indescription">Description</label>
+            <label for="indescription">Description</label> 
             <textarea required id="indescription" rows="5" columns="10" v-model="description" maxlength="60"> </textarea>
             <label for="indeadline">Deadline</label>
-            <input required type="date" required placeholder="дд.мм.гггг" id="indeadline" v-model="deadline">
+            <input required type="date" required placeholder="01.01.1991" id="indeadline" v-model="deadline">
             <button type="submit">Add a card</button>
         </form>
         
@@ -330,6 +332,9 @@ Vue.component('newcard', {
             this.deadline = null
             console.log(card)
         }
+    },
+    computed: {
+        
     }
 })
 
